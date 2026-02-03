@@ -46,4 +46,23 @@ SELECT COUNT(*) FROM
 WHERE fare_amount = 0
 8333
 
+### Question 5
+What is the best strategy to make an optimized table in Big Query if your query will always filter based on tpep_dropoff_datetime and order the results by VendorID (Create a new table with this strategy)
+Partition by tpep_dropoff_datetime and Cluster on VendorID
+
+### Question 6
+Write a query to retrieve the distinct VendorIDs between tpep_dropoff_datetime 2024-03-01 and 2024-03-15 (inclusive)
+
+Use the materialized table you created earlier in your from clause and note the estimated bytes. Now change the table in the from clause to the partitioned table you created for question 5 and note the estimated bytes processed. What are these values?
+310.24, 0  (Closest = 310.24, 26.84)
+
+### Question 7
+Where is the data stored in the External Table you created?
+GCP Bucket
+
+### Question 8
+It is best practice in Big Query to always cluster your data:
+False
+
+
 
