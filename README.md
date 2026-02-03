@@ -30,3 +30,20 @@ SELECT COUNT(DISTINCT PULocationID) FROM
 SELECT COUNT(DISTINCT PULocationID) FROM
   `dtc-de-course-484604`.`ny_taxi_ds_lds`.`yellow_tripdata_2024_01-06_parquet_non_partitioned`
 0MB, 155.112MB
+
+### Question 3
+Write a query to retrieve the PULocationID from the table (not the external table) in BigQuery. Now write a query to retrieve the PULocationID and DOLocationID on the same table. Why are the estimated number of Bytes different?
+SELECT PULocationID FROM
+  `dtc-de-course-484604`.`ny_taxi_ds_lds`.`yellow_tripdata_2024_01-06_parquet_non_partitioned`
+SELECT PULocationID, DOLocationID FROM
+  `dtc-de-course-484604`.`ny_taxi_ds_lds`.`yellow_tripdata_2024_01-06_parquet_non_partitioned`
+155.12MB, 310.24MB - It's reading two columns from a columnar database
+
+### Question 4
+How many records have a fare_amount of 0?
+SELECT COUNT(*) FROM
+  `dtc-de-course-484604`.`ny_taxi_ds_lds`.`yellow_tripdata_2024_01-06_parquet_ext`
+WHERE fare_amount = 0
+8333
+
+
