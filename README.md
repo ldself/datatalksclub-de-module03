@@ -54,6 +54,12 @@ Partition by tpep_dropoff_datetime and Cluster on VendorID
 Write a query to retrieve the distinct VendorIDs between tpep_dropoff_datetime 2024-03-01 and 2024-03-15 (inclusive)
 
 Use the materialized table you created earlier in your from clause and note the estimated bytes. Now change the table in the from clause to the partitioned table you created for question 5 and note the estimated bytes processed. What are these values?
+SELECT DISTINCT(VendorID) FROM
+  `dtc-de-course-484604`.`ny_taxi_ds_lds`.`yellow_tripdata_2024_01-06_parquet_non_partitioned`
+WHERE tpep_dropoff_datetime >= '2024-03-01 00:00:00' and tpep_dropoff_datetime < '2024-03-15 00:00:00'
+SELECT DISTINCT(VendorID) FROM
+  `dtc-de-course-484604`.`ny_taxi_ds_lds`.`yellow_tripdata_2024_01-06_parquet_ext`
+WHERE tpep_dropoff_datetime >= '2024-03-01 00:00:00' and tpep_dropoff_datetime < '2024-03-15 00:00:00'
 310.24, 0  (Closest = 310.24, 26.84)
 
 ### Question 7
